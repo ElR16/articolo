@@ -15,7 +15,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="title-container">
+                        <div class="title-container" style="margin-bottom: 20px;">
                             <div class="title-field">
                                 <label for="title">Title*</label>
                                 <input id="title" type="text" formControlName="title" placeholder="inserire titolo"
@@ -61,7 +61,7 @@
                         </div>
                         <div class="body">
         
-                                <div class="title-container">
+                                <div class="title-container" style="margin-bottom: 20px;margin-top: 20px;">
                                     <div class="title-field">
                                         <label for="paragraphTitle">Titolo del Paragrafo*</label>
                                         <input id="paragraphTitle" type="text" formControlName="paragraphTitle" placeholder="inserire titolo del paragrafo" />
@@ -86,9 +86,9 @@
         
                                 </div>
                                 <div class="field">
-                                    <button (click)="resetParagraph(i)">
+                                    <button (click)="resetParagraph(i)" style="margin-top: 25px;">
                                     reset paragrafo</button>
-                                    <button (click)="removeParagraph(i)" *ngIf="i>0"> elimina paragrafo</button>
+                                    <button (click)="removeParagraph(i)" *ngIf="i>0"style="margin-top: 15px;"> elimina paragrafo</button>
                                      </div>
                         </div>
                     </div>
