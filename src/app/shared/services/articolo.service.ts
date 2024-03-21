@@ -47,7 +47,7 @@ export class ArticoloService {
       
       concatMap(
         imageDb => {
-          console.log('post image')
+          
           return this.http.post<ImageDb>(`${this.serverUrl}/mediaImage`, imageDb).pipe(
             map(x => x.id!)
           )
@@ -74,7 +74,6 @@ export class ArticoloService {
       var reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = function () {
-        console.log('reader', reader.result);
         resolve(reader.result as string)
       };
       reader.onerror = function (error) {

@@ -7,7 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import {MatButtonModule} from '@angular/material/button'; 
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     ArticoloComponent
@@ -19,7 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
     InputTextModule,
     DropdownModule,
     ButtonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ]
 })
 export class CoreModule { }

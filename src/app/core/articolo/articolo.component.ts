@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { partition } from 'rxjs';
 import { ArticoloService } from 'src/app/shared/services/articolo.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-articolo',
@@ -17,7 +19,8 @@ export class ArticoloComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service : ArticoloService ) { }
+    private service : ArticoloService,
+    private snackBar: MatSnackBar ) { }
 
   ngOnInit(): void {
 
@@ -36,13 +39,20 @@ export class ArticoloComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
+   
+    
     if (this.form.valid) {
-      console.log(this.form.value);
+    
+      
       
       this.service.postArticle(this.form.value).subscribe(
         
       )
+      this.snackBar.open('Inserimento avvenuto con successo!', 'Chiudi', { 
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+        duration: 3000,
+      })
     }
   }
   hasError(controlName: string, errorName: string): boolean {
@@ -114,7 +124,8 @@ export class ArticoloComponent implements OnInit {
 
   removeParagraph(index: number): void {
 
-    console.log(this.paragrafi.length)
+    
+    
     if (this.paragrafi.length > 1) {
       this.paragrafi.removeAt(index);
     }
