@@ -1,3 +1,8 @@
+
+per prima cosa utilizzare il comando npm run server
+per far partire il json server
+dopo utilizzare il comando npm start
+
 # Articolo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.2.
