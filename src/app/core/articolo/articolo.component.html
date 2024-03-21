@@ -1,0 +1,108 @@
+<div class="container">
+    <h3> CREA ARTICOLO</h3>
+    <div class="content">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="card">
+                <div class="header">
+                    <h4>informazioni principali</h4>
+                </div>
+                <div class="body">
+                        <div class="lan-container">
+                            <div class="field">
+                                <label for="lingua"> Selezione Lingua</label>
+                                <select name="language" id="language" formControlName="lingua">
+                                    <option [value]="lingua" *ngFor="let lingua of lingue">{{lingua}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="title-container">
+                            <div class="title-field">
+                                <label for="title">Title*</label>
+                                <input id="title" type="text" formControlName="title" placeholder="inserire titolo"
+                                [class.ng-invalid]="form.get('title')?.invalid && form.get('title')?.dirty"/>
+                                <small *ngIf="hasError('title', 'required')">Il titolo è obbligatorio.</small>
+                                <small *ngIf="form.get('title')?.errors?.['maxWords']">Il titolo può avere al massimo 15
+                                    parole.</small>
+                            </div>
+                            <div class="title-field">
+                                <label for="subtitle"> Sottotitolo</label>
+                                <input id="subtitle" type="text" formControlName="subtitle" placeholder="inserire sottotitolo" />
+                                <small *ngIf="form.get('subtitle')?.errors?.['maxWords']">Il sottotitolo può avere al massimo 17
+                                    parole.</small>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="description"> descrizione*</label>
+                            <textarea id="description" formControlName="description" placeholder="inserire descrizione"> </textarea>
+                        </div>
+                        <div class="city-field">
+                            <div class="field">
+                                <label for="citta"> Selezione città*</label>
+                                <select name="destinationID" id="destinationID" formControlName="destinationID" aria-placeholder="selezionare città">
+                                    <option [value]="citta" *ngFor="let citta of destinationID">{{citta}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="file"> Carica Immagine*</label>
+                            <input type="file" (change)="onFileSelectedArticolo($event)" formControlName="mediaImage">
+        
+                        </div>
+        
+        
+                </div>
+            </div>
+        
+            <div class="card">
+                <div class="container-paragraf" formArrayName="paragrafi">
+                    <div *ngFor="let paragrafo of paragrafi.controls; let i = index" [formGroupName]="i" class="paragraph-container">
+                        <div class="header">
+                            <h4>Paragrafo {{i+1}}</h4>
+                        </div>
+                        <div class="body">
+        
+                                <div class="title-container">
+                                    <div class="title-field">
+                                        <label for="paragraphTitle">Titolo del Paragrafo*</label>
+                                        <input id="paragraphTitle" type="text" formControlName="paragraphTitle" placeholder="inserire titolo del paragrafo" />
+                                        <small *ngIf="hasError('paragraphTitle', 'required')">Il titolo è obbligatorio.</small>
+                                        <small *ngIf="form.get('paragraphTitle')?.errors?.['maxWords']">Il titolo può avere al
+                                            massimo 15 parole.</small>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="paragraphText"> descrizione del paragrafo*</label>
+                                    <textarea id="paragraphText" formControlName="paragraphText" placeholder="inserire descrizione del paragrafo"> </textarea>
+                                </div>
+                                <div class="city-field">
+                                    <div class="field">
+                                        <label for="citta"> inserire città*</label>
+                                        <input type="text" formControlName="destinationID" placeholder="inserire città">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="file"> Carica Immagine*</label>
+                                    <input type="file" (change)="onFileSelectedParagrafi($event,i)" formControlName="mediaImage">
+        
+                                </div>
+                                <div class="field">
+                                    <button (click)="resetParagraph(i)">
+                                    reset paragrafo</button>
+                                    <button (click)="removeParagraph(i)" *ngIf="i>0"> elimina paragrafo</button>
+                                     </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottone">
+                
+                <button type="submit" label="Invia" class="save-button" [disabled]="form.invalid"><i class="fas fa-save"></i>  Salva</button>
+                <button (click)="addParagraph()"  class="add-button"> aggiungi paragrafo <i class="fas fa-plus"></i> </button>
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>
