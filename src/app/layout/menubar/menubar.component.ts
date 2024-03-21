@@ -16,11 +16,11 @@ export class MenubarComponent implements OnInit {
     this.items = [
     {
       label: 'articolo',
-      icon: 'pi pi-fw pi-file',
+      icon: 'fas fa-book', 
       items: [
           {
               label: 'Nuovo',
-              icon: 'pi pi-fw pi-plus',command:() => {this.navigateTo('/articolo'); }
+              icon: 'fas fa-plus',command:() => {this.navigateTo('/articolo'); }
           },
           {
               separator: true
